@@ -1,0 +1,35 @@
+<?php
+session_start();
+include("dbcon.php');
+
+if(isset($_ POST('login_now_btn']))
+
+
+{
+	$email - $ POST[" email*1;
+	$clearTextPassword - $_POST ['password'];
+
+
+   try {
+
+	$user - $auth-›getUserByEmai1("$email");
+	
+	$signInResult = $auth-›signInWithEmailAndPassword($email, $clearTextPassword);
+	$idTokenString = $signInResult->idToken() ;
+
+   try {
+	$verifiedIdToken = $auth-›verifyIdToken($idTokenString);
+	
+   } catch (InvalidToken $e) {
+	echo 'The token is invalid: '$e-›getMessage();
+   } catch (\InvalidArgumentException $e) {
+	echo 'The token could not be parsed: '$e-›getMessage();
+   }
+
+  } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
+	// echo $e-›getMessage();
+	$_SESSION[' status'] = "No Email Found":
+	header("Location: login.php");
+exit();
+   }
+}
