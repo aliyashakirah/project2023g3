@@ -101,3 +101,36 @@ a {
 
 </body>
 </html>
+
+<?php
+session_start();
+include("dbcon.php'):
+
+if(Isset ($_POST['register_now btn']))
+
+$name = $_POST[' fullname'];
+$phone = _POST([' phone' ];
+$email = $_POST[' email' ]:
+$password = $_POST[' password']:
+
+$userProperties = [
+	'email' => $email,
+	'emailverified' => false,
+	'phoneNumber' => $phone, 
+	'password' => $password,
+	'displayName'=› $name,
+];
+
+$createdUser - $auth-›createUser ($userProperties);
+if ($createdUser)
+
+{
+	$_SESSION[' status"] - "User created Successfully";
+	header ("Location: register php");
+}
+
+else
+{
+	$_SESSION(' status'] - "User Not Created": header ("Location: register.php");
+	header ("Location: register php");
+}
