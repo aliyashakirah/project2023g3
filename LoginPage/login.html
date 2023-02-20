@@ -34,7 +34,7 @@ p{
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -49,7 +49,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 /* Set a style for the submit button */
-.registerbtn {
+.loginbtn {
   background-color: #2bcece;
   color: black;
   padding: 16px 20px;
@@ -61,7 +61,7 @@ input[type=text]:focus, input[type=password]:focus {
   border-radius: 8px;
 }
 
-.registerbtn:hover {
+.loginbtn:hover {
   opacity: 1;
 }
 
@@ -79,58 +79,46 @@ a {
 <body>
 
 <form action="/action_page.php">
-<h1>Register</h1>
+<h1>Login</h1>
   <div class="container">
 
     <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Enter username" name="username" id="username" required>
 
-    <label for="email"><b>Email</b></email>
-    <input type="email" placeholder="Enter your email" name="email" id="email" required>
-
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter password" name="psw" id="psw" required>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat password" name="psw-repeat" id="psw-repeat" required>
+    <input type="checkbox" id="check"
+    <span>Remember Me</span><br><br>
+    
 
-    <button type="submit" class="registerbtn">Register</button>
-     <p>Already have an account? <a href="#">Sign in</a>.</p>
+    <button type="submit" class="loginbtn">Login</button>
+    <br><p><a href="#">Forgot Password</a></p>
+    <br><p>Don't have an account? <a href="#">Register</a>.</p>
   </div>
 </form>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAhWbh21MPiSSft1NGV6IRgHIUxc_O5T3Q",
+    authDomain: "contactless-doorbell-system.firebaseapp.com",
+    databaseURL: "https://contactless-doorbell-system-default-rtdb.firebaseio.com",
+    projectId: "contactless-doorbell-system",
+    storageBucket: "contactless-doorbell-system.appspot.com",
+    messagingSenderId: "786112047342",
+    appId: "1:786112047342:web:1a07a451d95ce6d7b62bff"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 
 </body>
 </html>
 
-<?php
-session_start();
-include("dbcon.php'):
-
-if(Isset ($_POST['register_now btn']))
-
-$name = $_POST[' fullname'];
-$phone = _POST([' phone' ];
-$email = $_POST[' email' ]:
-$password = $_POST[' password']:
-
-$userProperties = [
-	'email' => $email,
-	'emailverified' => false,
-	'phoneNumber' => $phone, 
-	'password' => $password,
-	'displayName'=› $name,
-];
-
-$createdUser - $auth-›createUser ($userProperties);
-if ($createdUser)
-
-{
-	$_SESSION[' status"] - "User created Successfully";
-	header ("Location: register php");
-}
-
-else
-{
-	$_SESSION(' status'] - "User Not Created": header ("Location: register.php");
-	header ("Location: register php");
-}

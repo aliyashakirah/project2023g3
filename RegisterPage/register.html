@@ -34,7 +34,7 @@ p{
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -49,7 +49,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 /* Set a style for the submit button */
-.loginbtn {
+.registerbtn {
   background-color: #2bcece;
   color: black;
   padding: 16px 20px;
@@ -61,7 +61,7 @@ input[type=text]:focus, input[type=password]:focus {
   border-radius: 8px;
 }
 
-.loginbtn:hover {
+.registerbtn:hover {
   opacity: 1;
 }
 
@@ -79,60 +79,58 @@ a {
 <body>
 
 <form action="/action_page.php">
-<h1>Login</h1>
+<h1>Register</h1>
   <div class="container">
 
     <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Enter username" name="username" id="username" required>
 
+    <label for="email"><b>Email</b></email>
+    <input type="email" placeholder="Enter your email" name="email" id="email" required>
+
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter password" name="psw" id="psw" required>
 
-    <input type="checkbox" id="check"
-    <span>Remember Me</span><br><br>
-    
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat password" name="psw-repeat" id="psw-repeat" required>
 
-    <button type="submit" class="loginbtn">Login</button>
-    <br><p><a href="#">Forgot Password</a></p>
-    <br><p>Don't have an account? <a href="#">Register</a>.</p>
+    <button type="submit" class="registerbtn">Register</button>
+     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 </form>
-
+<script src="email-validation.js"></script>
 </body>
 </html>
 
 <?php
 session_start();
-include("dbcon.php');
+include("dbcon.php'):
 
-if(isset($_ POST('login_now_btn']))
+if(Isset ($_POST['register_now btn']))
 
+$name = $_POST[' fullname'];
+$phone = _POST([' phone' ];
+$email = $_POST[' email' ]:
+$password = $_POST[' password']:
+
+$userProperties = [
+	'email' => $email,
+	'emailverified' => false,
+	'phoneNumber' => $phone, 
+	'password' => $password,
+	'displayName'=› $name,
+];
+
+$createdUser - $auth-›createUser ($userProperties);
+if ($createdUser)
 
 {
-	$email - $ POST[" email*1;
-	$clearTextPassword - $_POST ['password'];
+	$_SESSION[' status"] - "User created Successfully";
+	header ("Location: register php");
+}
 
-
-   try {
-
-	$user - $auth-›getUserByEmai1("$email");
-	
-	$signInResult = $auth-›signInWithEmailAndPassword($email, $clearTextPassword);
-	$idTokenString = $signInResult->idToken() ;
-
-   try {
-	$verifiedIdToken = $auth-›verifyIdToken($idTokenString);
-	
-   } catch (InvalidToken $e) {
-	echo 'The token is invalid: '$e-›getMessage();
-   } catch (\InvalidArgumentException $e) {
-	echo 'The token could not be parsed: '$e-›getMessage();
-   }
-
-  } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
-	// echo $e-›getMessage();
-	$_SESSION[' status'] = "No Email Found":
-	header("Location: login.php");
-exit();
-   }
+else
+{
+	$_SESSION(' status'] - "User Not Created": header ("Location: register.php");
+	header ("Location: register php");
 }
