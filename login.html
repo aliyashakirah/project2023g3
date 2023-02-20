@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -80,6 +82,7 @@ a {
 
 <form action="/action_page.php">
 <h1>Login</h1>
+ <main id="main-holder">
   <div class="container">
 
     <label for="username"><b>Username</b></label>
@@ -97,42 +100,30 @@ a {
     <br><p>Don't have an account? <a href="#">Register</a>.</p>
   </div>
 </form>
+</main>
+
+<script defer src="login-page.js"></script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAhWbh21MPiSSft1NGV6IRgHIUxc_O5T3Q",
+    authDomain: "contactless-doorbell-system.firebaseapp.com",
+    databaseURL: "https://contactless-doorbell-system-default-rtdb.firebaseio.com",
+    projectId: "contactless-doorbell-system",
+    storageBucket: "contactless-doorbell-system.appspot.com",
+    messagingSenderId: "786112047342",
+    appId: "1:786112047342:web:1a07a451d95ce6d7b62bff"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 
 </body>
 </html>
 
-<?php
-session_start();
-include("dbcon.php');
-
-if(isset($_ POST('login_now_btn']))
-
-
-{
-	$email - $ POST[" email*1;
-	$clearTextPassword - $_POST ['password'];
-
-
-   try {
-
-	$user - $auth-›getUserByEmai1("$email");
-	
-	$signInResult = $auth-›signInWithEmailAndPassword($email, $clearTextPassword);
-	$idTokenString = $signInResult->idToken() ;
-
-   try {
-	$verifiedIdToken = $auth-›verifyIdToken($idTokenString);
-	
-   } catch (InvalidToken $e) {
-	echo 'The token is invalid: '$e-›getMessage();
-   } catch (\InvalidArgumentException $e) {
-	echo 'The token could not be parsed: '$e-›getMessage();
-   }
-
-  } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
-	// echo $e-›getMessage();
-	$_SESSION[' status'] = "No Email Found":
-	header("Location: login.php");
-exit();
-   }
-}
