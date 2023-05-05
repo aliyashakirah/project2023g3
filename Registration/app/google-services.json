@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "632429347595",
+    "project_id": "contactless-doorbell-c5a46",
+    "storage_bucket": "contactless-doorbell-c5a46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632429347595:android:517c20ba1386b9fbb1d80e",
+        "android_client_info": {
+          "package_name": "com.example.registration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632429347595-p11hja556bv8v2ekjn208q86qvm6hapo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj7a9ogIBcfAOVU1_DAtGfX2q6-GweG94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632429347595-p11hja556bv8v2ekjn208q86qvm6hapo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
